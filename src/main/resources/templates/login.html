@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>NextFilm</title>
+
+<!-- Bootstrap -->
+<link href="/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet"/>
+<!-- Font Awesome -->
+<link href="/gentelella-master/vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet"/>
+<!-- NProgress -->
+<link href="/gentelella-master/vendors/nprogress/nprogress.css" rel="stylesheet"/>
+<!-- Animate.css -->
+<link href="/gentelella-master/vendors/animate.css/animate.min.css" rel="stylesheet"/>
+
+<!-- Custom Theme Style -->
+<link href="/gentelella-master/build/css/custom.min.css" rel="stylesheet"/>
+
+<!-- AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<!-- FastClick -->
+    <script src="/gentelella-master/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/gentelella-master/vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="/gentelella-master/vendors/validator/validator.js"></script>
+    
+<script src="js/usuarioController.js"></script>
+
+</head>
+
+<body class="login" ng-app="app" ng-controller="usuarioController">
+	<div>
+		<a class="hiddenanchor" id="signup"></a> <a class="hiddenanchor" id="signin"></a>
+
+		<div class="login_wrapper">
+			<div class="animate form login_form">
+				<section class="login_content">
+					<div th:if="${param.error}" class="alert alert-danger">
+			            Usuário e/ou senha inválido
+			        </div>
+			        <div th:if="${param.logout}" class="alert alert-info">
+			            Você foi desconectado
+			        </div>
+					<form th:action="@{/login}" method="post">
+						<h1>Login</h1>
+						<div>
+							<input type="text" name="username" class="form-control" placeholder="Usuário" required="" ng-model="usuario.login" />
+						</div>
+						<div>
+							<input type="password" name="password" class="form-control" placeholder="Senha" required="" />
+						</div>
+						<div>
+							<!-- <a class="btn btn-default submit" href="listagem.html">Entrar</a> -->
+							<input class="btn btn-default submit" type="submit" value="Entrar" ng-click="entrar()" />
+							<!-- <a class="reset_pass" href="#">Esqueceu a senha?</a> -->
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link">Novo no site? <a href="#signup" class="to_register"> Criar conta </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+
+							<div>
+								<h1>
+									<i class="glyphicon glyphicon-film"></i> NextFilm
+								</h1>
+								<p>©2017 Todos direitos reservados</p>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+
+			<div id="register" class="animate form registration_form">
+				<section class="login_content">
+					<form>
+						<h1>Criar conta</h1>
+						<div>
+							<input id="usuarioLogin" type="text" class="form-control" ng-model="usuario.login" placeholder="Usuário" required="required" />
+						</div>
+						<div>
+							<input id="usuarioEmail" type="email" class="form-control" ng-model="usuario.email" placeholder="Email" required="required" />
+						</div>
+						<div>
+							<input id="usuarioSenha" type="password" name="senha" required="required" class="form-control" placeholder="Senha" ng-model="usuario.senha"/>
+						</div>
+						<!-- <div>
+							<input type="password" id="confirmaSenha" name="confirmaSenha" data-validate-linked="senha" required="required" class="form-control" placeholder="Confirme a senha"/>
+						</div> -->
+						
+						<div>
+							<!-- <a class="btn btn-default submit">Cadastrar</a> -->
+							<button class="btn btn-default" ng-click="cadastrar()">Cadastrar</button>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link"> Já tem conta? <a href="#signin" class="to_register"> Entrar </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+
+							<div>
+								<h1>
+									<i class="glyphicon glyphicon-film"></i> NextFilm
+								</h1>
+								<p>©2017 Todos direitos reservados</p>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>NextFilme</title>
+
+<!-- Bootstrap -->
+<link href="../vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet"/>
+<!-- Font Awesome -->
+<link href="../vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet"/>
+<!-- NProgress -->
+<link href="../vendors/nprogress/nprogress.css" rel="stylesheet"/>
+<!-- Animate.css -->
+<link href="../vendors/animate.css/animate.min.css" rel="stylesheet"/>
+
+<!-- Custom Theme Style -->
+<link href="../build/css/custom.min.css" rel="stylesheet"/>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script src="../../js/usuarioController.js"></script>
+</head>
+
+<body class="login" ng-app="app" ng-controller="usuarioController">
+	<div>
+		<a class="hiddenanchor" id="signup"></a> <a class="hiddenanchor" id="signin"></a>
+
+		<div class="login_wrapper">
+			<div class="animate form login_form">
+				<section class="login_content">
+					<form>
+						<h1>Login</h1>
+						<div>
+							<input type="text" class="form-control" placeholder="Email" required="" />
+						</div>
+						<div>
+							<input type="password" class="form-control" placeholder="Senha" required="" />
+						</div>
+						<div>
+							<!-- <a class="btn btn-default submit" href="listagem.html">Entrar</a> -->
+							<input class="btn btn-default submit" type="submit" value="Entrar"/>
+							<a class="reset_pass" href="#">Esqueceu a senha?</a>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link">Novo no site? <a href="#signup" class="to_register"> Criar conta </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+
+							<div>
+								<h1>
+									<i class="glyphicon glyphicon-film"></i> NextFilme
+								</h1>
+								<p>©2017 Todos direitos reservados</p>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+
+			<div id="register" class="animate form registration_form">
+				<section class="login_content">
+					<form>
+						<h1>Criar conta</h1>
+						<div>
+							<input type="text" class="form-control" placeholder="Nome"
+								required="" />
+						</div>
+						<div>
+							<input type="email" class="form-control" placeholder="Email" required="" />
+						</div>
+						<div>
+							<input type="password" class="form-control" placeholder="Senha" required="" />
+						</div>
+						<div>
+							<input type="password" class="form-control" placeholder="Confirme a senha" required="" />
+						</div>
+						<div>
+							<a class="btn btn-default submit" href="index.html">Cadastrar</a>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link"> Já tem conta? <a href="#signin" class="to_register"> Entrar </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+
+							<div>
+								<h1>
+									<i class="glyphicon glyphicon-film"></i> NextFilme
+								</h1>
+								<p>©2017 Todos direitos reservados</p>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
