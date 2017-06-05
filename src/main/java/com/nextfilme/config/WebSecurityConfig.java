@@ -18,7 +18,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/gentelella-master/**", "/js/**", "/usuarios/**", "/videos/**", "/categorias/**", "/sessao/**").permitAll().anyRequest()
+		http.authorizeRequests().antMatchers(
+				"/", 
+				"/gentelella-master/**", 
+				"/js/**", 
+				"/usuarios/**", 
+				"/videos/**", 
+				"/categorias/**", 
+				"/sessao/**", 
+				"/generos/**", 
+				"/atores/**"
+				).permitAll().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().csrf().disable();
 	}
 

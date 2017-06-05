@@ -58,4 +58,25 @@ public class UsuarioResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody HttpEntity<Void> atualizar(@RequestBody UsuarioRepresentation representation, @PathVariable("id") Integer id) {
+		
+		representation.setIdentifier(id);
+		usuarioService.atualizar(UsuarioRepresentation.build(representation));
+		
+		return ResponseEntity.noContent().build();
+		
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody HttpEntity<UsuarioRepresentation> delete(@PathVariable("id") Integer id) {
+		
+		Usuario usuario = usuarioService.buscaPorId(id);
+		UsuarioRepresentation representation = new UsuarioRepresentation(usuario);
+		usuarioService.delete(usuario);
+		
+		return ResponseEntity.ok(representation);
+		
+	}
+	
 }

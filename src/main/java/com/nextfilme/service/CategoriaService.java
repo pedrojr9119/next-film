@@ -35,18 +35,18 @@ public class CategoriaService {
 	}
 
 	@Transactional(readOnly=false)
-	public Categoria save(Categoria video) {
-		return categoriaRepository.save(video);
+	public Categoria save(Categoria categoria) {
+		return categoriaRepository.save(categoria);
 	}
 
 	@Transactional(readOnly=false)
-	public void atualizar(Categoria video) {
-		categoriaRepository.save(video);
+	public void atualizar(Categoria categoria) {
+		categoriaRepository.save(categoria);
 	}
 
 	@Transactional(readOnly=false)
-	public void delete(Categoria video) {
-		categoriaRepository.delete(video);
+	public void delete(Categoria categoria) {
+		categoriaRepository.delete(categoria);
 	}
 	
 }

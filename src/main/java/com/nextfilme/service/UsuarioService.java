@@ -61,4 +61,14 @@ public class UsuarioService {
 	public Usuario buscaPorId(Integer id) {	
 		return usuarioRepository.findOne(id);
 	}
+	
+	@Transactional(readOnly=false)
+	public void atualizar(Usuario usuario) {
+		usuarioRepository.save(usuario);
+	}
+
+	@Transactional(readOnly=false)
+	public void delete(Usuario usuario) {
+		usuarioRepository.delete(usuario);
+	}
 }

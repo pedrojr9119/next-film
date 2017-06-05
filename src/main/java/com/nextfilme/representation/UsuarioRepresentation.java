@@ -20,6 +20,9 @@ public class UsuarioRepresentation extends ResourceSupport {
 	@JsonInclude(Include.NON_NULL)
 	private String senha;
 	
+	@JsonInclude(Include.NON_NULL)
+	private Boolean habilitado;
+	
 	public UsuarioRepresentation() {
 	}
 
@@ -29,6 +32,7 @@ public class UsuarioRepresentation extends ResourceSupport {
 		this.login = usuario.getLogin();
 		this.email = usuario.getEmail();
 		this.senha = usuario.getSenha();
+		this.habilitado = usuario.getHabilitado();
 	}
 	
 	public static Usuario build(UsuarioRepresentation representation) {
@@ -37,6 +41,7 @@ public class UsuarioRepresentation extends ResourceSupport {
 		usuario.setLogin(representation.getLogin());
 		usuario.setEmail(representation.getEmail());
 		usuario.setSenha(representation.getSenha());
+		usuario.setHabilitado(representation.getHabilitado());
 		
 		return usuario;
 	}
@@ -71,6 +76,14 @@ public class UsuarioRepresentation extends ResourceSupport {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public Boolean getHabilitado() {
+		return habilitado;
+	}
+	
+	public void setHabilitado(Boolean habilitado) {
+		this.habilitado = habilitado;
 	}
 	
 }
