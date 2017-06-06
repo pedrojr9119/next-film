@@ -22,12 +22,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/", 
 				"/gentelella-master/**", 
 				"/js/**", 
+				"/css/**", 
 				"/usuarios/**", 
 				"/videos/**", 
 				"/categorias/**", 
 				"/sessao/**", 
 				"/generos/**", 
-				"/atores/**"
+				"/atores/**", 
+				"/favoritos/**"
 				).permitAll().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().csrf().disable();
 	}
