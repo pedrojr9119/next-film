@@ -34,8 +34,10 @@
 
 						<div class="col-md-7 col-sm-7 col-xs-12">
 							<div class="product-image">
-								<video type="video/mp4" src="http://techslides.com/demos/sample-videos/small.mp4"
-										height="350" width="500" controls="controls">
+								<video height="350" width="500" controls>
+									<source type="video/mp4" ng-src="{{ video.url }}" />
+  									<source type="video/webm" ng-src="{{ video.url }}" />
+  									<source type="video/mkv" ng-src="{{ video.url }}" />
 								</video>
 							</div>
 						</div>
@@ -47,10 +49,10 @@
 							<p>{{ video.sinopse }}</p>
 							<br />
 							
-							<h3 class="prod_title">Gênero</h3>
+							<!-- <h3 class="prod_title">Gênero</h3>
 
 							<p>{{ video.sinopse }}</p>
-							<br />
+							<br /> -->
 							
 							<table>
 								<tr>

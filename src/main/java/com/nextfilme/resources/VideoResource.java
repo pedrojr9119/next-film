@@ -35,10 +35,7 @@ public class VideoResource {
 		List<Video> videos = videoService.buscaTodos();
 		List<VideoRepresentation> representations = new ArrayList<>();
 		
-		videos.forEach(video -> {
-			video.setSinopse(video.getSinopse().substring(0, 40) + "...");
-			representations.add(new VideoRepresentation(video));
-		});
+		videos.forEach(video -> representations.add(new VideoRepresentation(video)));
 		
 		return ResponseEntity.ok(representations);
 	}

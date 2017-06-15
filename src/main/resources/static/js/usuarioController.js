@@ -1,7 +1,7 @@
 var app = angular.module("app", []);
 
 app.controller("usuarioController", function($scope, $http) {
-	var url = "http://localhost:8080/";
+	var url = "http://52.67.194.126:8080/";
 	var usuario = "";
 	
 	$scope.cadastrar = function() {

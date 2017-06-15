@@ -1,9 +1,10 @@
 var app = angular.module("videoControllers", []);
 
 app.controller("videoController", function($scope, $http, $stateParams, $interval) {
-	var url = "http://localhost:8080/";
+	var url = "http://52.67.194.126:8080/";
 	$scope.sessao = {};
 	$scope.usuario = {};
+	$scope.video = {};
 	var videoId = "";
 	var usuarioLogin = "";
 	
@@ -14,20 +15,16 @@ app.controller("videoController", function($scope, $http, $stateParams, $interva
 		$http.get(url + "videos/" + id, $scope.video)
 		.then(function(response) {
 			$scope.video = response.data;
+			
+			$scope.$watch('mp4', function() {
+				$("video").attr("src", $scope.video.url);
+			});
+			
+			//$scope.video.url = $sce.trustAsResourceUrl($scope.video.url);
 		}, function(response) {
 			window.alert("Erro de POST!");
 		});
 	};
-	
-	/*$scope.dadosVideo = function(id) {
-		$http.get(url + "session/" + id)
-		.then(function mySucces(response) {
-	        $scope.sessao = response.data;
-	        video.currentTime = $scope.sessao.tempo;
-	    }, function myError(response) {
-	        window.alert("Erro de GET!");
-	    });
-	};*/
 	
 	$scope.salvar = function() {
 		$http.post(url + "sessao", $scope.sessao)
@@ -46,7 +43,7 @@ app.controller("videoController", function($scope, $http, $stateParams, $interva
 	};
 	
 	video.addEventListener('ended', function() {
-		$scope.buscarSessao(videoId, usuarioLogin);
+		//$scope.buscarSessao(videoId, usuarioLogin);
 		id = $scope.sessao.identifier;
 		$scope.sessao.status = 'assistido';
 		$scope.atualizar(id);
@@ -58,7 +55,6 @@ app.controller("videoController", function($scope, $http, $stateParams, $interva
 			id = $scope.sessao.identifier;
 			$scope.sessao.tempo = video.currentTime;
 			
-			//if(typeof id === "undefined" || id === null) {
 			if(typeof $scope.sessao.status === "undefined") {
 				$scope.sessao.usuarioRepresentation = $scope.usuario;
 				$scope.sessao.videoRepresentation = $scope.video;	
@@ -74,7 +70,10 @@ app.controller("videoController", function($scope, $http, $stateParams, $interva
 		$http.get(url + "sessao/video/" + idVideo + "/usuario/" + usuarioLogin, $scope.sessao)
 		.then(function(response) {
 			$scope.sessao = response.data;
-			video.currentTime = $scope.sessao.tempo;
+			
+			if (video.currentTime < $scope.sessao.tempo) {
+				video.currentTime = $scope.sessao.tempo;
+			}
 		}, function(response) {
 			//window.alert("Erro de GET!");
 		});
@@ -98,3 +97,9 @@ app.controller("videoController", function($scope, $http, $stateParams, $interva
 	$scope.buscarSessao(videoId, usuarioLogin);
 	
 });
+
+/*app.filter("trusted", ['$sce', function ($sce) {
+    return function (recordingUrl) {
+        return $sce.trustAsResourceUrl(urlVideo);
+    };
+}]);*/

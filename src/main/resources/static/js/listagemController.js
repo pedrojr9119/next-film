@@ -1,7 +1,7 @@
 var app = angular.module("listagemControllers", []);
 
 app.controller("listagemController", function($scope, $http) {
-	var url = "http://localhost:8080/";
+	var url = "http://52.67.194.126:8080/";
 	$scope.usuario = {};
 	
 	$scope.listarVideos = function() {
@@ -9,7 +9,7 @@ app.controller("listagemController", function($scope, $http) {
 		.then(function(response) {
 			$scope.videos = response.data;
 		}, function(response) {
-			window.alert("Erro de POST!");
+			window.alert("Erro de GET!");
 		});
 	};
 	
